@@ -20,5 +20,11 @@ pipeline {
         junit '**/surefire-reports/**/*.xml'
       }
     }
+    stage('Deploy to Staging') {
+      steps {
+        sh './jenkins/deploy.sh production'
+        input 'Deploy to production?'
+      }
+    }
   }
 }
